@@ -86,7 +86,7 @@
         .section-padding { padding: 100px 8%; max-width: 1200px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-size: 36px; font-weight: 300; margin: 0 0 15px 0; }
-        .section-header p { color: var(--coklat-muda); font-size: 16px; max-width: 500px; margin: 0 auto; }
+        .section-header p { color: var(--coklat-muda); font-size: 16px; max-width: 500px; margin: 0 auto; line-height: 1.6; }
 
         /* --- Layanan (Cards) --- */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -106,6 +106,79 @@
             font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;
         }
         .btn-outline:hover { background: var(--hitam); color: var(--putih); border-color: var(--hitam); }
+
+        /* --- Kisah / Testimoni Storytelling --- */
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .story-card {
+            background: var(--putih);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px var(--shadow);
+            position: relative;
+        }
+
+        .story-quote-icon {
+            position: absolute;
+            top: -20px;
+            left: 40px;
+            background: var(--krem);
+            color: var(--emas);
+            font-size: 24px;
+            padding: 10px;
+            border-radius: 50%;
+            border: 1px solid rgba(168, 142, 113, 0.2);
+        }
+
+        .story-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--hitam);
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+
+        .story-text {
+            color: #555;
+            line-height: 1.8;
+            font-size: 15px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .story-author-box {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid rgba(168, 142, 113, 0.2);
+            padding-top: 20px;
+        }
+
+        .story-author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--coklat-muda);
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .story-author-info h4 {
+            margin: 0 0 5px 0;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .story-author-info p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--coklat-muda);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
         /* --- Modal (Pop-up) Styles --- */
         .modal-overlay {
@@ -135,7 +208,6 @@
         .modal-header h3 { font-size: 28px; font-weight: 300; margin: 0 0 10px 0; color: var(--emas); }
         .modal-header p { color: #666; font-size: 15px; }
 
-        /* --- Package Tiers in Modal --- */
         .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .package-tier {
             background: var(--putih); border: 1px solid rgba(168, 142, 113, 0.2);
@@ -169,6 +241,7 @@
             .hero-title { font-size: 36px; } nav { display: none; }
             header { justify-content: center; } .modal-content { padding: 30px 20px; }
             .wa-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
+            .story-card { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -179,7 +252,7 @@
         <nav>
             <a href="#home">Beranda</a>
             <a href="#layanan">Layanan</a>
-            <a href="#testimoni">Kisah</a>
+            <a href="#kisah">Kisah</a>
         </nav>
     </header>
 
@@ -216,6 +289,41 @@
                 <h3>Engagement Package</h3>
                 <p>Langkah pertama menuju pelaminan. Perencanaan acara lamaran yang berkesan, estetik, dan terorganisir.</p>
                 <button class="btn-outline" onclick="openModal('modal-engagement')">Lihat Detail Paket</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="kisah" class="section-padding" style="background-color: var(--putih); max-width: 100%; padding-left: 8%; padding-right: 8%;">
+        <div class="section-header">
+            <h2>Kisah Mereka, Mahakarya Kami</h2>
+            <p>Lebih dari sekadar ulasan, ini adalah cerita tentang bagaimana kami mengubah kecemasan menjadi ketenangan di hari paling membahagiakan mereka.</p>
+        </div>
+        
+        <div class="story-grid" style="max-width: 1200px; margin: 0 auto;">
+            <div class="story-card">
+                <i class="fa-solid fa-quote-right story-quote-icon"></i>
+                <h3 class="story-title">"Penyelamat di Tengah Kepanikan."</h3>
+                <p class="story-text">"Hanya 3 minggu sebelum hari H, vendor katering awal kami mendadak batal. Kami hampir putus asa. Maharaka turun tangan, menggunakan jaringan mereka, dan dalam 2x24 jam kami mendapatkan ganti katering yang jauh lebih enak dan elegan. Di hari pernikahan, tidak ada satupun tamu yang tahu bahwa kami sempat mengalami krisis. Maharaka bukan sekadar WO, mereka adalah pelindung kewarasan kami."</p>
+                <div class="story-author-box">
+                    <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=2070&auto=format&fit=crop" alt="Foto Klien" class="story-author-img">
+                    <div class="story-author-info">
+                        <h4>Dian & Andika</h4>
+                        <p>Grand Ballroom Wedding</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <i class="fa-solid fa-quote-right story-quote-icon"></i>
+                <h3 class="story-title">"Rumah Disulap Menjadi Magis."</h3>
+                <p class="story-text">"Awalnya saya ragu mengadakan resepsi di rumah karena halamannya sempit. Tapi tim Maharaka datang untuk survei, mengatur tata letak yang sangat jenius, dan menyulap teras rumah kami menjadi venue intimate yang terlihat mahal. *Time keeper* mereka sangat tegas namun ramah, membuat acara dari pagi hingga sore mengalir tanpa ada *ngaret* sama sekali."</p>
+                <div class="story-author-box">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop" alt="Foto Klien" class="story-author-img">
+                    <div class="story-author-info">
+                        <h4>Sarah & Fajar</h4>
+                        <p>Intimate Home Wedding</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -329,7 +437,6 @@
             </div>
         </div>
     </div>
-
     <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Wedding%20Organizer." class="wa-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -337,15 +444,14 @@
     <script>
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
-            document.body.style.overflow = 'hidden'; // Mencegah background bisa di-scroll saat pop-up terbuka
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeModal(modalId) {
             document.getElementById(modalId).classList.remove('active');
-            document.body.style.overflow = 'auto'; // Mengembalikan scroll
+            document.body.style.overflow = 'auto'; 
         }
 
-        // Menutup modal jika area gelap (overlay) di luar konten diklik
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.classList.remove('active');
