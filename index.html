@@ -155,3 +155,227 @@
             font-size: 16px;
             max-width: 500px;
             margin: 0 auto;
+        }
+
+        /* --- Fitur / Layanan --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--putih);
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 32px;
+            color: var(--emas);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* --- Produk Digital Section --- */
+        #produk {
+            background-color: var(--hitam);
+            color: var(--putih);
+            text-align: center;
+            padding: 80px 5%;
+            border-radius: 16px;
+            margin: 0 8% 100px;
+        }
+
+        .product-price {
+            font-size: 42px;
+            color: var(--emas);
+            font-weight: 300;
+            margin: 15px 0;
+        }
+
+        /* --- Testimoni --- */
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testi-card {
+            background: transparent;
+            border: 1px solid rgba(168, 142, 113, 0.3);
+            padding: 30px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .quote-icon {
+            color: var(--emas);
+            font-size: 24px;
+            opacity: 0.5;
+            margin-bottom: 15px;
+        }
+
+        .testi-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .testi-author {
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--hitam);
+        }
+
+        /* --- Floating WhatsApp Automation --- */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1);
+        }
+
+        .wa-tooltip {
+            position: fixed;
+            bottom: 45px;
+            right: 100px;
+            background: var(--hitam);
+            color: var(--putih);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s ease;
+        }
+
+        .wa-float:hover + .wa-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- Responsif (Mobile) --- */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 36px; }
+            nav { display: none; }
+            header { justify-content: center; }
+            #produk { margin: 0 5% 60px; border-radius: 8px; }
+            .wa-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#home" class="logo">Maharaka</a>
+        <nav>
+            <a href="#home">Beranda</a>
+            <a href="#layanan">Layanan</a>
+            <a href="#produk">Produk</a>
+            <a href="#testimoni">Kisah</a>
+        </nav>
+    </header>
+
+    <section id="home">
+        <span class="hero-subtitle">Kuningan, Jawa Barat</span>
+        <h1 class="hero-title">Elegansi dalam Setiap Detail Momen Anda.</h1>
+        <p class="hero-desc">Bukan sekadar merencanakan acara, kami merangkai kisah cinta Anda menjadi perayaan yang tanpa celah. Biarkan kami mengurus kerumitannya, sementara Anda menikmati kebahagiaannya.</p>
+        <a href="#layanan" class="btn-primary">Jelajahi Layanan</a>
+    </section>
+
+    <section id="layanan" class="section-padding">
+        <div class="section-header">
+            <h2>Layanan Kami</h2>
+            <p>Fleksibilitas paket yang dirancang khusus untuk memenuhi visi pernikahan impian Anda, baik intim maupun megah.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-house-chimney service-icon"></i>
+                <h3>Intimate Home Wedding</h3>
+                <p>Transformasi hunian Anda menjadi *venue* magis untuk momen sakral yang hangat bersama keluarga terdekat.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-building service-icon"></i>
+                <h3>Grand Ballroom Wedding</h3>
+                <p>Manajemen acara skala besar dengan presisi tinggi, memastikan kemegahan acara tanpa mengorbankan detail.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-ring service-icon"></i>
+                <h3>Engagement Package</h3>
+                <p>Langkah pertama menuju pelaminan. Perencanaan acara lamaran yang berkesan, estetik, dan terorganisir.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="produk">
+        <div class="section-header" style="margin-bottom: 30px;">
+            <h2 style="color: var(--putih);">Panduan: Teks Izin Menikah</h2>
+        </div>
+        <p style="font-size: 18px; max-width: 600px; margin: 0 auto; color: #ccc;">Sampaikan rasa terima kasih dan permohonan restu kepada orang tua dengan kata-kata yang mengalir dari hati. Kumpulan 10 draf teks eksklusif yang mendalam dan sopan.</p>
+        <p class="product-price">Rp 50.000</p>
+        <a href="https://wa.me/6281234567890?text=Halo%20Maharaka,%20saya%20ingin%20membeli%20produk%2010%20Teks%20Izin%20Menikah." class="btn-primary" style="background-color: var(--putih); color: var(--hitam);">Dapatkan Sekarang</a>
+    </section>
+
+    <section id="testimoni" class="section-padding" style="padding-top: 0;">
+        <div class="section-header">
+            <h2>Kata Mereka</h2>
+            <p>Kepercayaan klien adalah portofolio terbaik kami.</p>
+        </div>
+        <div class="testi-grid">
+            <div class="testi-card">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p class="testi-text">"Sangat profesional! Tim Maharaka sangat detail mengurus dari A sampai Z. Kami sekeluarga bisa benar-benar rileks menikmati acara tanpa pusing mikirin vendor."</p>
+                <p class="testi-author">— Sarah & Dimas</p>
+            </div>
+            <div class="testi-card">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p class="testi-text">"WO terbaik di Kuningan. Briefingnya sangat rapi, *time keeper*-nya responsif. Bahkan saat ada perubahan mendadak, mereka punya *plan B* yang solid."</p>
+                <p class="testi-author">— Anisa & Reza</p>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20ingin%20konsultasi%20mengenai%20paket%20pernikahan.%20Bisa%20dibantu?" class="wa-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <span class="wa-tooltip">Konsultasi Gratis!</span>
+
+</body>
+</html>
