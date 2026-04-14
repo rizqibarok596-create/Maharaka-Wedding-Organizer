@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maharaka | Elegan Wedding Organizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- Palet Warna Elegan --- */
+        :root {
+            --krem: #FBF9F6;          
+            --hitam: #1A1A1A;         
+            --emas: #D4AF37;          /* Emas yang lebih *muted* dan elegan */
+            --coklat-muda: #A88E71;   
+            --putih: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --kaca: rgba(251, 249, 246, 0.9);
+        }
+
+        body {
+            background-color: var(--krem);
+            color: var(--hitam);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Navigasi Atas --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--kaca);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(168, 142, 113, 0.15);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--hitam);
+            text-decoration: none;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--hitam);
+            font-weight: 400;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--emas);
+        }
+
+        /* --- Hero Section (Tampilan Foto) --- */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.7)), 
+                        url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            color: var(--putih);
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--emas);
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 300;
+            margin: 0 0 20px 0;
+            line-height: 1.1;
+            max-width: 800px;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            font-weight: 300;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #E0E0E0;
+        }
+
+        .btn-primary {
+            background-color: var(--emas);
+            color: var(--putih);
+            padding: 16px 45px;
+            border-radius: 4px; /* Sudut lebih tegas untuk kesan elegan */
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 13px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #b8962e;
+            transform: translateY(-2px);
+        }
+
+        /* --- Global Section Style --- */
+        .section-padding {
+            padding: 100px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 300;
+            color: var(--hitam);
+            margin: 0 0 15px 0;
+        }
+
+        .section-header p {
+            color: var(--coklat-muda);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
