@@ -14,7 +14,7 @@
             --coklat-muda: #A88E71;   
             --putih: #FFFFFF;
             --shadow: rgba(0, 0, 0, 0.08);
-            --kaca: rgba(251, 249, 246, 0.9);
+            --kaca: rgba(26, 26, 26, 0.3); /* Disesuaikan agar lebih menyatu dengan background gelap */
         }
 
         body {
@@ -27,88 +27,159 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Navigasi Atas --- */
+        /* --- Navigasi Atas (Diperbarui menyerupai gambar) --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--kaca);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(168, 142, 113, 0.15);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
+            padding: 25px 8%;
             box-sizing: border-box;
+            transition: background 0.3s ease;
+        }
+
+        /* Jika di-scroll, navigasi akan menjadi solid gelap */
+        header.scrolled {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 8%;
         }
 
         .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--putih);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav { display: flex; gap: 35px; }
+        nav a {
+            text-decoration: none; color: var(--putih);
+            font-weight: 400; font-size: 14px; 
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a.active { color: var(--emas); }
+
+        /* --- Hero Section (Diperbarui rata kiri) --- */
+        #home {
+            position: relative;
+            height: 100vh;
+            /* Tambahkan gradasi gelap dari kiri ke kanan agar teks putih lebih terbaca */
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%), 
+                        url('bg-maharaka.jpg') center/cover no-repeat;
+            display: flex; 
+            align-items: center; /* Rata tengah secara vertikal */
+            padding: 0 8%; 
+            color: var(--putih);
+        }
+
+        .hero-content {
+            text-align: left;
+            max-width: 650px;
+            margin-top: -60px; /* Sedikit dinaikkan agar seimbang dengan card di bawah */
+        }
+
+        .hero-subtitle { 
+            font-size: 14px; 
+            color: var(--emas); 
+            margin-bottom: 15px; 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .hero-title { 
+            font-size: 64px; 
+            font-weight: 700; 
+            margin: 0 0 20px 0; 
+            line-height: 1.1; 
+        }
+        
+        .hero-desc { 
+            font-size: 18px; 
+            font-weight: 300; 
+            max-width: 500px; 
+            line-height: 1.6; 
+            margin-bottom: 40px; 
+            color: #E0E0E0; 
+        }
+        
+        .btn-white {
+            background-color: var(--putih); 
+            color: var(--hitam);
+            padding: 16px 35px; 
+            border-radius: 50px; /* Bentuk pil / kapsul */
+            text-decoration: none;
+            font-weight: 600; 
+            letter-spacing: 1px; 
+            text-transform: uppercase; 
+            font-size: 12px;
+            transition: all 0.3s ease; 
+            display: inline-block;
+        }
+        .btn-white:hover { 
+            background-color: var(--emas); 
+            color: var(--putih);
+            transform: translateY(-2px); 
+        }
+
+        /* --- Overlapping Glass Cards (Sesuai Gambar) --- */
+        .hero-cards-wrapper {
+            position: absolute;
+            bottom: -60px; /* Membuat posisi tumpang tindih */
+            left: 8%;
+            right: 8%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            z-index: 10;
+        }
+
+        .glass-card {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.8));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 30px;
+            min-height: 140px;
+            display: flex;
+            align-items: flex-end; /* Teks berada di bawah */
+            color: var(--putih);
+            text-decoration: none;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--emas);
+        }
+
+        .glass-card h3 {
+            margin: 0;
             font-size: 24px;
             font-weight: 600;
-            color: var(--hitam);
-            text-decoration: none;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            line-height: 1.3;
         }
-
-        nav { display: flex; gap: 40px; }
-        nav a {
-            text-decoration: none; color: var(--hitam);
-            font-weight: 400; font-size: 13px; text-transform: uppercase;
-            letter-spacing: 1.5px; transition: color 0.3s ease;
-        }
-        nav a:hover { color: var(--emas); }
-
-        /* --- Hero Section --- */
-        #home {
-            height: 100vh;
-            /* Latar belakang telah diatur untuk memanggil foto bg-maharaka.jpg */
-            background: linear-gradient(rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.7)), 
-                        url('bg-maharaka.jpg') center/cover no-repeat;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 0 5%; color: var(--putih);
-        }
-
-        .hero-subtitle { font-size: 14px; text-transform: uppercase; letter-spacing: 4px; color: var(--emas); margin-bottom: 20px; }
-        .hero-title { font-size: 56px; font-weight: 300; margin: 0 0 20px 0; line-height: 1.1; max-width: 800px; }
-        .hero-desc { font-size: 18px; font-weight: 300; max-width: 600px; line-height: 1.6; margin-bottom: 40px; color: #E0E0E0; }
-        
-        .btn-primary {
-            background-color: var(--emas); color: var(--putih);
-            padding: 16px 45px; border-radius: 4px; text-decoration: none;
-            font-weight: 500; letter-spacing: 1px; text-transform: uppercase; font-size: 13px;
-            transition: all 0.3s ease; cursor: pointer; border: none; display: inline-block;
-        }
-        .btn-primary:hover { background-color: #b8962e; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
 
         /* --- Global Section Style --- */
-        .section-padding { padding: 100px 8%; max-width: 1200px; margin: 0 auto; }
+        /* Padding top diperbesar karena ada overlapping cards dari atas */
+        .section-padding { padding: 150px 8% 100px; max-width: 1200px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-size: 36px; font-weight: 300; margin: 0 0 15px 0; }
         .section-header p { color: var(--coklat-muda); font-size: 16px; max-width: 500px; margin: 0 auto; line-height: 1.6; }
 
-        /* --- Layanan (Cards) --- */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .service-card {
-            background: var(--putih); padding: 40px 30px; border-radius: 8px;
-            text-align: center; box-shadow: 0 10px 30px var(--shadow);
-            transition: transform 0.3s ease; display: flex; flex-direction: column; height: 100%; box-sizing: border-box;
-        }
-        .service-card:hover { transform: translateY(-10px); }
-        .service-icon { font-size: 32px; color: var(--emas); margin-bottom: 20px; }
-        .service-card h3 { font-weight: 500; margin-bottom: 15px; }
-        .service-card p { color: #666; font-size: 15px; line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
-        
-        .btn-outline {
-            background: transparent; border: 1px solid var(--coklat-muda); color: var(--hitam);
-            padding: 12px 30px; border-radius: 4px; text-decoration: none; cursor: pointer;
-            font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;
-        }
-        .btn-outline:hover { background: var(--hitam); color: var(--putih); border-color: var(--hitam); }
+        /* Sembunyikan grid layanan lama, kita gunakan Modal langsung dari Glass Cards */
+        #layanan-lama { display: none; }
 
         /* --- Kisah / Testimoni --- */
+        #kisah { padding-top: 100px; }
         .story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
         .story-card {
             background: var(--putih); padding: 40px; border-radius: 8px;
@@ -126,7 +197,7 @@
         .story-author-info h4 { margin: 0 0 5px 0; font-size: 15px; font-weight: 600; }
         .story-author-info p { margin: 0; font-size: 13px; color: var(--coklat-muda); text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- Produk Spesial (Copywriting Section) --- */
+        /* --- Produk Spesial --- */
         #produk {
             background: linear-gradient(135deg, var(--hitam) 0%, #2a2a2a 100%);
             color: var(--putih);
@@ -160,9 +231,8 @@
             text-align: center; padding: 80px 5% 40px;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
-        .footer-logo { font-size: 28px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; color: var(--putih); text-decoration: none; }
+        .footer-logo { font-size: 28px; font-weight: 600; letter-spacing: 3px; margin-bottom: 20px; display: block; color: var(--putih); text-decoration: none; }
         .footer-desc { color: #888; font-size: 14px; max-width: 400px; margin: 0 auto 40px; line-height: 1.6; }
-        
         .social-container { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; }
         .social-link {
             display: flex; align-items: center; justify-content: center;
@@ -172,7 +242,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .social-link:hover { background: var(--emas); color: var(--hitam); transform: translateY(-5px); border-color: var(--emas); }
-        
         .copyright { color: #666; font-size: 12px; margin: 0; letter-spacing: 1px; }
 
         /* --- Modal (Pop-up) Styles --- */
@@ -196,7 +265,6 @@
         }
         .close-modal:hover { color: var(--emas); }
 
-        /* --- Package Tiers in Modal --- */
         .modal-header { text-align: center; margin-bottom: 40px; }
         .modal-header h3 { font-size: 28px; font-weight: 300; margin: 0 0 10px 0; color: var(--emas); }
         .modal-header p { color: #666; font-size: 15px; }
@@ -214,6 +282,14 @@
         .tier-benefits li { font-size: 14px; color: #555; margin-bottom: 12px; padding-left: 25px; position: relative; line-height: 1.5; }
         .tier-benefits li::before { content: '\f00c'; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; top: 2px; color: var(--emas); font-size: 12px; }
 
+        .btn-primary {
+            background-color: var(--emas); color: var(--putih);
+            padding: 16px 45px; border-radius: 4px; text-decoration: none;
+            font-weight: 500; letter-spacing: 1px; text-transform: uppercase; font-size: 13px;
+            transition: all 0.3s ease; display: inline-block; cursor: pointer; border: none;
+        }
+        .btn-primary:hover { background-color: #b8962e; transform: translateY(-2px); }
+
         /* --- Floating WhatsApp --- */
         .wa-float {
             position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white;
@@ -223,64 +299,54 @@
         }
         .wa-float:hover { transform: scale(1.1); }
 
+        /* --- Responsif --- */
         @media (max-width: 768px) {
-            .hero-title { font-size: 36px; } nav { display: none; }
-            header { justify-content: center; } .modal-content { padding: 30px 20px; }
-            .wa-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
-            .story-card { padding: 30px 20px; }
+            .hero-title { font-size: 42px; } 
+            .hero-content { margin-top: -150px; }
+            nav { display: none; }
+            .hero-cards-wrapper { grid-template-columns: 1fr; bottom: -200px; }
+            .section-padding { padding-top: 250px; }
             #produk { padding: 60px 5%; margin: 0 5% 60px; }
             .produk-title { font-size: 28px; }
+            .wa-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="#home" class="logo">Maharaka</a>
+    <header id="main-header">
+        <a href="#home" class="logo">Logo Maharaka</a>
         <nav>
-            <a href="#home">Beranda</a>
-            <a href="#layanan">Layanan</a>
+            <a href="#home" class="active">Beranda</a>
             <a href="#kisah">Kisah</a>
             <a href="#produk">Produk</a>
         </nav>
     </header>
 
     <section id="home">
-        <span class="hero-subtitle">Kuningan, Jawa Barat</span>
-        <h1 class="hero-title">Elegansi dalam Setiap Detail Momen Anda.</h1>
-        <p class="hero-desc">Biarkan kami mengurus kerumitannya, sementara Anda menikmati kebahagiaannya.</p>
-        <a href="#layanan" class="btn-primary">Jelajahi Layanan</a>
-    </section>
-
-    <section id="layanan" class="section-padding">
-        <div class="section-header">
-            <h2>Layanan & Paket</h2>
-            <p>Fleksibilitas paket yang dirancang khusus untuk memenuhi visi pernikahan impian Anda.</p>
+        <div class="hero-content">
+            <span class="hero-subtitle">
+                <i class="fa-solid fa-location-dot"></i> Kuningan, Jawa Barat
+            </span>
+            <h1 class="hero-title">Elegansi dalam<br>Setiap Detail<br>Momen Anda,</h1>
+            <p class="hero-desc">Biarkan kami mengurus kerumitannya,<br>sementara Anda menikmati kebahagiaannya.</p>
+            <a href="#kisah" class="btn-white">Jelajahi Layanan</a>
         </div>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fa-solid fa-house-chimney service-icon"></i>
-                <h3>Intimate Home Wedding</h3>
-                <p>Transformasi hunian Anda menjadi venue magis untuk momen sakral yang hangat bersama keluarga terdekat.</p>
-                <button class="btn-outline" onclick="openModal('modal-home')">Lihat Detail Paket</button>
+
+        <div class="hero-cards-wrapper">
+            <div class="glass-card" onclick="openModal('modal-home')">
+                <h3>Intimate Home<br>Wedding</h3>
             </div>
-            <div class="service-card">
-                <i class="fa-solid fa-building service-icon"></i>
-                <h3>Grand Ballroom Wedding</h3>
-                <p>Manajemen acara skala besar dengan presisi tinggi, memastikan kemegahan acara tanpa mengorbankan detail.</p>
-                <button class="btn-outline" onclick="openModal('modal-ballroom')">Lihat Detail Paket</button>
+            <div class="glass-card" onclick="openModal('modal-ballroom')">
+                <h3>Grand Ballroom<br>Wedding</h3>
             </div>
-            <div class="service-card">
-                <i class="fa-solid fa-ring service-icon"></i>
-                <h3>Engagement Package</h3>
-                <p>Langkah pertama menuju pelaminan. Perencanaan acara lamaran yang berkesan, estetik, dan terorganisir.</p>
-                <button class="btn-outline" onclick="openModal('modal-engagement')">Lihat Detail Paket</button>
+            <div class="glass-card" onclick="openModal('modal-engagement')">
+                <h3>Engagement<br>Package</h3>
             </div>
         </div>
     </section>
 
-    <section id="kisah" class="section-padding" style="padding-top: 0;">
+    <section id="kisah" class="section-padding">
         <div class="section-header">
             <h2>Kisah Mereka, Mahakarya Kami</h2>
             <p>Lebih dari sekadar ulasan, ini adalah cerita tentang bagaimana kami mengubah kecemasan menjadi ketenangan di hari paling membahagiakan mereka.</p>
@@ -317,8 +383,7 @@
         <span class="produk-badge">Digital Guidebook</span>
         <h2 class="produk-title">Kehabisan Kata di Momen Paling Bermakna?</h2>
         <p class="produk-desc">
-            Momen memohon restu (*sungkeman*) kepada kedua orang tua adalah detik-detik paling sakral yang akan Anda kenang seumur hidup. Jangan biarkan rasa gugup menghalangi niat tulus Anda. <br><br>
-            Kami merangkai <b>10 Draf Teks Izin Menikah</b>—dari yang bernuansa syahdu, religius, hingga mendalam—sebagai panduan Anda menyampaikan rasa terima kasih dan permohonan maaf dengan runtut, sopan, dan menyentuh hati.
+            Kami merangkai <b>10 Draf Teks Izin Menikah</b>—sebagai panduan Anda menyampaikan rasa terima kasih dan permohonan maaf kepada orang tua dengan runtut, sopan, dan menyentuh hati tanpa perlu merasa gugup.
         </p>
         <div class="produk-price">
             <span>Rp 150.000</span> Rp 50.000
@@ -333,15 +398,9 @@
         <p class="footer-desc">Merangkai kisah cinta Anda menjadi perayaan yang tanpa celah. Berbasis di Kuningan, melayani dengan sepenuh hati.</p>
         
         <div class="social-container">
-            <a href="https://www.instagram.com/maharaka_wo?igsh=MTQzYTdzMWppZW9nOQ==" target="_blank" class="social-link" aria-label="Instagram">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.tiktok.com/@maharaka_wo?_r=1&_t=ZS-95WuwA9wctc" target="_blank" class="social-link" aria-label="TikTok">
-                <i class="fa-brands fa-tiktok"></i>
-            </a>
-            <a href="mailto:contac.maharaka@gmail.com" class="social-link" aria-label="Email">
-                <i class="fa-regular fa-envelope"></i>
-            </a>
+            <a href="https://www.instagram.com/maharaka_wo?igsh=MTQzYTdzMWppZW9nOQ==" target="_blank" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@maharaka_wo?_r=1&_t=ZS-95WuwA9wctc" target="_blank" class="social-link" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="mailto:contac.maharaka@gmail.com" class="social-link" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
         </div>
         
         <p class="copyright">&copy; 2026 Maharaka Wedding Organizer. All rights reserved.</p>
@@ -359,24 +418,22 @@
                     <h4 class="tier-name">Paket Bersemi</h4>
                     <p class="tier-price">Rp 15.000.000</p>
                     <ul class="tier-benefits">
-                        <li>Dekorasi pelaminan & area akad elegan (Max 6 meter)</li>
+                        <li>Dekorasi pelaminan & area akad elegan</li>
                         <li>Tenda VIP & Kursi Tiffany untuk 100 Tamu</li>
-                        <li>Make Up & Attire Pengantin (Akad & Resepsi)</li>
                         <li>WO Hari H (4 Kru Profesional)</li>
                     </ul>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20konsultasi%20mengenai%20Intimate%20Home%20-%20Paket%20Bersemi." class="btn-primary" style="width: 100%; box-sizing: border-box; text-align: center;">Pilih Paket</a>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20dengan%20Intimate%20Home%20-%20Paket%20Bersemi" class="btn-primary" style="width:100%; text-align:center; box-sizing: border-box;">Pilih Paket</a>
                 </div>
                 <div class="package-tier popular">
                     <div class="popular-badge">Most Wanted</div>
                     <h4 class="tier-name">Paket Mekar</h4>
                     <p class="tier-price">Rp 25.000.000</p>
                     <ul class="tier-benefits">
-                        <li>Semua fasilitas di Paket Bersemi</li>
-                        <li>Upgrade Dekorasi Premium & Lorong Bunga</li>
+                        <li>Upgrade Dekorasi Premium</li>
                         <li>Catering Prasmanan untuk 200 Pax</li>
-                        <li>Full Planning WO (Bantuan dari 3 bulan sebelum H)</li>
+                        <li>Full Planning WO (3 bulan sebelum H)</li>
                     </ul>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20konsultasi%20mengenai%20Intimate%20Home%20-%20Paket%20Mekar." class="btn-primary" style="width: 100%; box-sizing: border-box; text-align: center;">Pilih Paket</a>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20dengan%20Intimate%20Home%20-%20Paket%20Mekar" class="btn-primary" style="width:100%; text-align:center; box-sizing: border-box;">Pilih Paket</a>
                 </div>
             </div>
         </div>
@@ -387,31 +444,29 @@
             <button class="close-modal" onclick="closeModal('modal-ballroom')">&times;</button>
             <div class="modal-header">
                 <h3>Grand Ballroom Wedding</h3>
-                <p>Kemegahan visual dan manajemen waktu yang sempurna untuk tamu undangan Anda.</p>
+                <p>Kemegahan visual dan manajemen waktu yang sempurna.</p>
             </div>
             <div class="packages-grid">
                 <div class="package-tier">
                     <h4 class="tier-name">Paket Safir</h4>
                     <p class="tier-price">Rp 65.000.000</p>
                     <ul class="tier-benefits">
-                        <li>Dekorasi Gedung Skala Menengah (Max 12 meter)</li>
+                        <li>Dekorasi Gedung Skala Menengah</li>
                         <li>Make Up & Attire Pengantin + Orang Tua</li>
-                        <li>Master of Ceremony (MC) & Full Band Hiburan</li>
                         <li>WO Hari H (8 Kru Berpengalaman)</li>
                     </ul>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20dengan%20Grand%20Ballroom%20-%20Paket%20Safir." class="btn-primary" style="width: 100%; box-sizing: border-box; text-align: center;">Pilih Paket</a>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20dengan%20Grand%20Ballroom%20-%20Paket%20Safir" class="btn-primary" style="width:100%; text-align:center; box-sizing: border-box;">Pilih Paket</a>
                 </div>
                 <div class="package-tier popular">
                     <div class="popular-badge">Premium</div>
                     <h4 class="tier-name">Paket Berlian</h4>
                     <p class="tier-price">Rp 115.000.000</p>
                     <ul class="tier-benefits">
-                        <li>Semua fasilitas di Paket Safir</li>
-                        <li>Dekorasi Gedung Mewah Custom & Lighting Show</li>
+                        <li>Dekorasi Gedung Mewah Custom</li>
                         <li>Catering Premium untuk 800 Pax</li>
-                        <li>Full Planning WO (Pendampingan total hingga hari H)</li>
+                        <li>Full Planning WO Pendampingan Total</li>
                     </ul>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20dengan%20Grand%20Ballroom%20-%20Paket%20Berlian." class="btn-primary" style="width: 100%; box-sizing: border-box; text-align: center;">Pilih Paket</a>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20dengan%20Grand%20Ballroom%20-%20Paket%20Berlian" class="btn-primary" style="width:100%; text-align:center; box-sizing: border-box;">Pilih Paket</a>
                 </div>
             </div>
         </div>
@@ -429,32 +484,43 @@
                     <h4 class="tier-name">Paket Harmoni</h4>
                     <p class="tier-price">Rp 6.500.000</p>
                     <ul class="tier-benefits">
-                        <li>Dekorasi Backdrop Lamaran (Bunga Artificial/Fresh)</li>
+                        <li>Dekorasi Backdrop Lamaran</li>
                         <li>Make Up & Hair Do Calon Mempelai Wanita</li>
-                        <li>Konseptor Acara (Susunan Acara Baku)</li>
+                        <li>Konseptor Acara</li>
                     </ul>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20konsultasi%20Engagement%20-%20Paket%20Harmoni." class="btn-primary" style="width: 100%; box-sizing: border-box; text-align: center;">Pilih Paket</a>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20dengan%20Engagement%20-%20Paket%20Harmoni" class="btn-primary" style="width:100%; text-align:center; box-sizing: border-box;">Pilih Paket</a>
                 </div>
                 <div class="package-tier popular">
                     <div class="popular-badge">Best Deal</div>
                     <h4 class="tier-name">Paket Romansa</h4>
                     <p class="tier-price">Rp 12.000.000</p>
                     <ul class="tier-benefits">
-                        <li>Semua fasilitas di Paket Harmoni</li>
-                        <li>Catering Box/Prasmanan Kecil untuk 50 Pax</li>
-                        <li>MC Profesional untuk Lamaran Formal</li>
-                        <li>2 Kru Koordinator Acara Hari H</li>
+                        <li>Semua fasilitas Paket Harmoni</li>
+                        <li>Catering Box/Prasmanan Kecil 50 Pax</li>
+                        <li>MC Profesional & 2 Kru Koordinator</li>
                     </ul>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20konsultasi%20Engagement%20-%20Paket%20Romansa." class="btn-primary" style="width: 100%; box-sizing: border-box; text-align: center;">Pilih Paket</a>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20tertarik%20dengan%20Engagement%20-%20Paket%20Romansa" class="btn-primary" style="width:100%; text-align:center; box-sizing: border-box;">Pilih Paket</a>
                 </div>
             </div>
         </div>
     </div>
+
     <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maharaka,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Wedding%20Organizer." class="wa-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script>
+        // Efek Background Header saat di-scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Modals Logic
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
             document.body.style.overflow = 'hidden'; 
